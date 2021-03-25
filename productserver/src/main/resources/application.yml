@@ -1,0 +1,12 @@
+server:
+  port: 9998
+
+spring:
+  application:
+    name: productserver
+  cloud:
+    consul:
+      discovery:
+        service-name: productserver
+      port: 8500
+      host: localhost

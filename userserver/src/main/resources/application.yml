@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: userserver
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        service-name: userserver
+
