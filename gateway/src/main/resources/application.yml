@@ -1,0 +1,29 @@
+server:
+  port: 8989
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        service-name: gateway
+    gateway:
+      routes:
+        - id: user_route
+          uri: lb://userserver        #lb:load balance 开启负载均衡 userserver: 注册中心服务名
+          predicates:
+            - Path=/feign/**
+          filters:
+            - AddRequestParameter=productId, 11
+            - AddResponseHeader=username, lbh
+
+        - id: product_route
+          uri: lb://productserver
+          predicates:
+            - Path=/product/**
+      discovery:
+        locator:
+          enabled: true         #开启动态路由规则

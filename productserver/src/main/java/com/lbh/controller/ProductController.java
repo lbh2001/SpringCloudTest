@@ -3,10 +3,7 @@ package com.lbh.controller;
 import com.lbh.entity.Product;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +17,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 public class ProductController {
+
 
     @PostMapping("/product/update")
     @ResponseBody
@@ -46,7 +44,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/findOne")
-    public Map<String,Object> findOne(String productId){
+    public Map<String,Object> findOne(@RequestParam("productId") String productId){
         Map<String,Object> map = new HashMap<>();
         map.put("status","success");
         map.put("msg",productId);

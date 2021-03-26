@@ -11,3 +11,10 @@ spring:
       discovery:
         service-name: userserver
 
+# 配置feign默认最大连接、读取时间
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
